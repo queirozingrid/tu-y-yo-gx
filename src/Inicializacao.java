@@ -13,7 +13,7 @@ public class Inicializacao {
         Personagem p2 = new Personagem("Big Girl", "Ataque", 50);
         Personagem p3 = new Personagem("IcerX", "Defesa", 40);
         Personagem p4 = new Personagem("Super Stone", "Defesa", 60);
-        Personagem p5 = new Personagem("Super Baby", "Ataque", 80);
+        Personagem p5 = new Personagem("Super Baby", "Ataque", 120);
         Personagem p6 = new Personagem("Spider Woman", "Ataque", 80);
         Personagem p7 = new Personagem("Come Here", "Defesa", 50);
         Personagem p8 = new Personagem("iBag", "Defesa", 50);

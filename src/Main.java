@@ -19,7 +19,6 @@ public class Main {
         inicio.inserirPersonagem();
         inicio.inserirCartas();
 
-        List<Personagem> personagens = inicio.getPersonagens();
         List<Carta> cartas = inicio.getTodasCartas();
 
         Partida partida = new Partida(p1, p2);

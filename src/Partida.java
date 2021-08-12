@@ -32,35 +32,39 @@ public class Partida {
                 p2.getCartas().add(cartas.get(aleatorio));
             }
         }
-        // ---- fins de testes ----
-//        System.out.println("Carta 1 p1: " + p1.getCartas().get(0).getPersonagem().getNome());
-//        System.out.println("Carta 2 p1: " + p1.getCartas().get(1).getPersonagem().getNome());
-//        System.out.println("Carta 3 p1: " + p1.getCartas().get(2).getPersonagem().getNome());
-//        System.out.println("Carta 4 p1: " + p1.getCartas().get(3).getPersonagem().getNome());
-//
-//        System.out.println("************************");
-//
-//        System.out.println("Carta 1 p2: " + p2.getCartas().get(0).getPersonagem().getNome());
-//        System.out.println("Carta 2 p2: " + p2.getCartas().get(1).getPersonagem().getNome());
-//        System.out.println("Carta 3 p2: " + p2.getCartas().get(2).getPersonagem().getNome());
-//        System.out.println("Carta 4 p2: " + p2.getCartas().get(3).getPersonagem().getNome());
 
     }
     public void iniciarPartida(){
-        boolean vez = true;
 
         while(p1.getCartas().size()>0 && p2.getCartas().size()>0){
-            if(vez){
-                Carta c1 = p1.jogar();
-                vez = false;
-            }
-            else {
-                p2.jogar();
-                Carta c2 = p2.jogar();
-                vez = true;
-            }
-
-
+            Carta c1 = p1.jogar();
+            Carta c2 = p2.jogar();
+            calcularPontucao(c1, c2);
+        }
+        if(p1.getCartas().size() == 0){
+            System.out.println(p2.getNome() + " venceu!!!");
+            System.exit(0);
+        }
+        if(p2.getCartas().size() == 0){
+            System.out.println(p1.getNome() + " venceu!!!");
+            System.exit(0);
+        }
+    }
+    public void calcularPontucao(Carta c1, Carta c2){
+        if(c1.getPersonagem().getForca() > c2.getPersonagem().getForca()){
+            p1.getCartas().add(c2);
+            p2.getCartas().remove(c2);
+            System.out.println("\n\n\n!!!!!!!! Jogador 1 venceu essa partida !!!!!!!!");
+            System.out.println("A carta " + c2.getPersonagem().getNome() + " agora pertence a: " + p1.getNome());
+        }
+        else if(c2.getPersonagem().getForca() > c1.getPersonagem().getForca()){
+            p2.getCartas().add(c1);
+            p1.getCartas().remove(c1);
+            System.out.println("\n\n\n!!!!!!!! Jogador 2 venceu essa partida !!!!!!!!");
+            System.out.println("A carta " + c2.getPersonagem().getNome() + " agora pertence a: " + p2.getNome());
+        }
+        else{
+            System.out.println("Empaaaaate, vamos para a próxima partida");
         }
     }
 }

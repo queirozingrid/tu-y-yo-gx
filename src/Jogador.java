@@ -1,4 +1,6 @@
+import javax.print.DocFlavor;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,14 +39,15 @@ public class Jogador {
         Scanner scan = new Scanner(System.in);
         System.out.println("Vez de " + getNome());
         System.out.println("ESTAS SÃO AS SUAS CARTAS\n");
-        for(int i=0; i<4; i++){
+        for(int i=0; i<getCartas().size(); i++){
             System.out.println("Carta " + i + ":\n" + getCartas().get(i).getPersonagem().getNome() + "\n" +
                     getCartas().get(i).getPersonagem().getCategoria() + "\nDano: " +
                     getCartas().get(i).getPersonagem().getForca() + "\n");
         }
+
         System.out.println("Qual você gostaria de jogar? Escolha de acordo com o número dela");
         int opcao = scan.nextInt();
-
         return (getCartas().get(opcao));
+
     }
 }
